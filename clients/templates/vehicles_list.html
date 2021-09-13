@@ -5,11 +5,11 @@
 {% block content %}
             <div class="row">
         <div class="col-12">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-dark">
                 <thead>
                 <tr>
-                    <th scope="col">Client Name</th>
-                                        <th scope="col">Client Account #</th>
+                    <th scope="col">Client</th>
+                                        <th scope="col">Account #</th>
 
                     <th scope="col">Make</th>
                     <th scope="col">Model</th>
@@ -32,7 +32,7 @@
                         <td>{{ vehicle.make }}</td>
                         <td>{{ vehicle.model }}</td>
                         <td>{{ vehicle.VIN }}</td>
-                        <td>{{ vehicle.date_of_purchase }}</td>
+                        <td>{{ vehicle.purchase_date }}</td>
                                                 <td>{{ vehicle.last_service_date }}</td>
 
 
@@ -40,8 +40,7 @@
 
                             <a type="button" class="btn btn-success" href="{% url 'vehicles_edit' vehicle.pk %}">Edit<i
                                     class="fas fa-pencil" aria-hidden="true"></i></a>
-                            <a type="button" class="btn btn-danger" href="{% url 'vehicles_delete' vehicle.pk %}">Delete<i
-                                    class="far fa-trash-o"></i></a>
+                            <a type="button" class="btn btn-danger" href="{% url 'vehicles_delete' vehicle.pk %}">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -54,5 +54,5 @@ class Vehicles(models.Model):
     make = models.CharField(max_length=140)
     model = models.CharField(max_length=140)
     VIN = models.CharField(max_length=140)
-    date_of_purchase = models.DateField()
+    purchase_date = models.DateField()
     last_service_date = models.DateField()

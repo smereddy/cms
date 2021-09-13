@@ -5,13 +5,15 @@
 {% block content %}
     <div class="row">
         <div class="col-12">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-dark">
                 <thead>
                 <tr>
-                    <th scope="col">Account number</th>
                     <th scope="col">Client Name</th>
+                    <th scope="col">Account number</th>
                     <th scope="col">Cell number</th>
                     <th scope="col">Email</th>
+                    <th scope="col">City</th>
+
                     <th scope="col">Notes</th>
 
                     <th scope="col">Actions</th>
@@ -21,19 +23,20 @@
                 {% for client in object_list %}
 
                     <tr>
-                        <th scope="row">{{ client.acct_number }}</th>
                         <td>{{ client.name }}</td>
+
+                        <th scope="row">{{ client.acct_number }}</th>
                         <td>{{ client.cell_phone }}</td>
                         <td>{{ client.email }}</td>
+                        <td>{{ client.city }}</td>
+
                         <td>{{ client.notes }}</td>
 
                         <td>
-                            <a type="button" class="btn btn-primary" href="{% url 'client_detail' client.pk %}">View<i
-                                    class="far fa-eye"></i></a>
-                            <a type="button" class="btn btn-success" href="{% url 'client_edit' client.pk %}">Edit<i
-                                    class="fas fa-edit"></i></a>
-                            <a type="button" class="btn btn-danger" href="{% url 'client_delete' client.pk %}">Delete<i
-                                    class="far fa-trash-o"></i></a>
+                            <a type="button" class="btn btn-primary" href="{% url 'client_detail' client.pk %}">View</a>
+                            <a type="button" class="btn btn-success" href="{% url 'client_edit' client.pk %}">Edit</a>
+                            <a type="button" class="btn btn-danger"
+                               href="{% url 'client_delete' client.pk %}">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

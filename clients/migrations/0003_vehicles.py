@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('make', models.CharField(max_length=140)),
                 ('model', models.CharField(max_length=140)),
                 ('VIN', models.CharField(max_length=140)),
-                ('date_of_purchase', models.DateField()),
+                ('purchase_date', models.DateField()),
                 ('last_service_date', models.DateField()),
                 ('client', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='vehicles', to='clients.client')),
             ],

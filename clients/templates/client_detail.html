@@ -3,88 +3,84 @@
 {% block content %}
     <div class="card">
         <div class="card-header">
-            <span class="font-weight-bold">Client Name: {{ object.name }}</span> |
-            <span class="font-weight-bold">Account number: {{ object.acct_number }} </span>
-
-
+            <span class="font-weight-bold">Client Name: {{ object.name }}</span>
+            <a type="button" class="btn btn-success pull-right"" href="{% url 'client_edit' client.pk %}">Edit</a>
+            <a type="button" class="btn btn-danger pull-right"" href="{% url 'client_delete' client.pk %}">Delete</a>
         </div>
         <div class="card-body">
-
+            <span class="font-weight-bold">Account number: {{ object.acct_number }} </span>
+            <span class="font-weight-bold">Phone: {{ object.cell_phone }} | </span><br>
+            <span class="font-muted">Email: {{ object.email }} | </span><br>
             <span class="font-muted">Address: {{ object.address }} | </span><br>
             <span class="font-muted-">City: {{ object.city }} | </span><br>
             <span class="font-muted">State: {{ object.state }} | </span><br>
             <span class="font-muted">Zip: {{ object.zipcode }} | </span><br>
-                        <span class="font-weight-bold">Phone: {{ object.cell_phone }} | </span><br>
-            <span class="font-muted">Email: {{ object.email }} | </span><br>
+
             <hr>
             <p>Notes: {{ object.notes }}</p>
 
         </div>
-    <div class="card-footer">
-                    <a type="button" class="btn btn-success pull-right"" href="{% url 'client_edit' client.pk %}">Edit<i
-                                    class="fas fa-edit"></i></a>
-                            <a type="button" class="btn btn-danger pull-right"" href="{% url 'client_delete' client.pk %}">Delete<i
-                                    class="far fa-trash-o"></i></a>
-    </div>
-
-    </div>
-    <hr>
-     <div class="card">
-        <div class="card-header">
-            Comments <a type="button" class="btn btn-success" href="{% url 'comment_create' object.pk %}">Add comment<i
-                                    class="fas fa-plus-square"></i></a>
-        </div>
-         <div class="card-body ">
-             {% for comment in object.comments.all %}
-                 <div class="card card-block">
-                         <div class="card-header">
-
-                <p>
-                    <span class="font-weight-bold">{{ comment.author }} &middot;</span>
-                    {{ comment }}
-                </p>
-                         </div>
-                             <div class="card-body">
- <a type="button" class="btn btn-success" hhref="{% url 'comment_edit' comment.pk %}">Edit<i
-                                    class="fas fa-edit"></i></a>
-                            <a type="button" class="btn btn-danger" href="{% url 'comment_delete' comment.pk %}">Delete<i
-                                    class="far fa-trash-o"></i></a>
-                             </div>
-                 <br>
-                 </div>
-            {% endfor %}
-         </div>
-     </div>
-        <hr>
-
+      <div class="card-footer">
+              <br>
     <div class="card">
         <div class="card-header">
-            Vehicles <a type="button" class="btn btn-success" href="{% url 'vehicles_create' object.pk %}">Add vehicles<i
-                                    class="fas fa-plus-square"></i></a>
+            Vehicles <a type="button" class="btn btn-success" href="{% url 'vehicles_create' object.pk %}">Add
+            vehicles</a>
         </div>
-         <div class="card-body">
-              {% for vehicle in object.vehicles.all %}
-        <div class="card">
-            <div class="card-header">
-                <span class="font-weight-bold">make: {{ vehicle.make }}  </span><br>
-                <span class="font-weight-bold">model: {{ vehicle.model }}  </span><br>
+        <div class="card-body">
+            {% for vehicle in object.vehicles.all %}
+                <div class="card">
+                    <div class="card-header">
+                        <a type="button" class="btn btn-success" href="{% url 'vehicles_edit' vehicle.pk %}">Edit</a>
+                        <a type="button" class="btn btn-danger" href="{% url 'vehicles_delete' vehicle.pk %}">Delete</a>
+                    </div>
+                    <div class="card-body">
+                        <span class="font-muted">VIN: {{ vehicle.VIN }} | </span><br>
 
-                <span class="font-muted">VIN: {{ vehicle.VIN }} | </span><br>
-                <span class="font-muted-">Date of Purchase: {{ vehicle.date_of_purchase }}  </span><br>
-                <span class="font-muted">Last Service Date: {{ vehicle.last_service_date }}  </span><br>
+                        <span class="font-weight-bold">make: {{ vehicle.make }}  </span><br>
+                        <span class="font-weight-bold">model: {{ vehicle.model }}  </span><br>
 
-            </div>
-            <div class="card-body">
-                 <a type="button" class="btn btn-success" href="{% url 'vehicles_edit' vehicle.pk %}">Edit<i
-                                    class="fas fa-edit"></i></a>
-                            <a type="button" class="btn btn-danger" href="{% url 'vehicles_delete' vehicle.pk %}">Delete<i
-                                    class="far fa-trash-o"></i></a>
-            </div>
+                        <span class="font-muted-">Date of Purchase: {{ vehicle.purchase_date }}  </span><br>
+                        <span class="font-muted">Last Service Date: {{ vehicle.last_service_date }}  </span><br>
+
+
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">
+            Comments <a type="button" class="btn btn-success" href="{% url 'comment_create' object.pk %}">Add
+            comment</a>
+        </div>
+        <div class="card-body ">
+            {% for comment in object.comments.all %}
+                <div class="card card-block">
+                    <div class="card-header">
+
+                        <p>
+                            <span class="font-weight-bold">Comment by: {{ comment.author }} &middot;</span>
+                            <br>
+                            Comment: {{ comment }}
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <a type="button" class="btn btn-success" hhref="{% url 'comment_edit' comment.pk %}">Edit</a>
+                        <a type="button" class="btn btn-danger" href="{% url 'comment_delete' comment.pk %}">Delete</a>
+                    </div>
+                    <br>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
         </div>
-    {% endfor %}
-         </div>
-     </div>
+
+    </div>
 
     <p>Back to <a href="{% url 'client_list' %}">All Clients</a>.</p>
 {% endblock content %}

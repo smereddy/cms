@@ -78,7 +78,7 @@ class VehiclesListView(LoginRequiredMixin, ListView):
 class VehiclesUpdateView(LoginRequiredMixin, UpdateView):
     model = Vehicles
     success_url = reverse_lazy('client_list')
-    fields = ('make', 'model', 'VIN', 'last_service_date', 'date_of_purchase',)
+    fields = ('make', 'model', 'VIN', 'last_service_date', 'purchase_date',)
     template_name = 'vehicles_edit.html'
 
 
@@ -92,7 +92,7 @@ class VehiclesCreateView(LoginRequiredMixin, CreateView):
     model = Vehicles
     template_name = 'vehicles_create.html'
     success_url = reverse_lazy('client_list')
-    fields = ('make', 'model', 'VIN', 'last_service_date', 'date_of_purchase',)
+    fields = ('make', 'model', 'VIN', 'last_service_date', 'purchase_date',)
     login_url = 'login'
 
     def form_valid(self, form):
